@@ -70,8 +70,16 @@ invocable_sumar2(){
   console.log(dato_desde_servicio)
 }
 activar_promedio(){
-  let promedio_desde_servicio = this.pruebaSrv.calcular_promedio(5,7);
-  console.log(promedio_desde_servicio)
+  let promedio_desde_servicio = this.pruebaSrv.calcular_promedio(2,4);
+
+  if (promedio_desde_servicio <= 4){
+    console.log(promedio_desde_servicio)
+    console.log("reprobado")
+  }else{
+    console.log(promedio_desde_servicio)
+    console.log("aprobado")
+  }
+
 }
 
 }
