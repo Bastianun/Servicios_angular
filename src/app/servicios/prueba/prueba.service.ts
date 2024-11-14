@@ -30,4 +30,8 @@ export class PruebaService {
   sumar2(numero:any,numero2:any){
     return (numero + numero2)
   }
+
+  calcular_promedio(numero:any,numero2:any){
+    return (numero + numero2) / 2
+  }
 }

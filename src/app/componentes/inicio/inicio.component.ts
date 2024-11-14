@@ -69,5 +69,9 @@ invocable_sumar2(){
   let dato_desde_servicio = this.pruebaSrv.sumar2(3,5);
   console.log(dato_desde_servicio)
 }
+activar_promedio(){
+  let promedio_desde_servicio = this.pruebaSrv.calcular_promedio(5,7);
+  console.log(promedio_desde_servicio)
+}
 
 }
