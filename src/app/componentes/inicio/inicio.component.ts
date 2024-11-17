@@ -9,13 +9,14 @@ import { PruebaService } from '../../servicios/prueba/prueba.service';
 })
 export class InicioComponent {
 //Instanciar en una variable el formulario reactivo
+datos_formulario:any;
 formularioForm;
 //FIN Instanciar en una variable el formulario reactivo
 //Crear un constructor: Esto permita inicializar variables con atributos y valores
 constructor(private formBuilder: FormBuilder, private pruebaSrv:PruebaService){
   this.formularioForm = this.formBuilder.group({
-    nombre: '',
-    apellido: ''
+    nota: '',
+    nota2: ''
   });
 }
 
@@ -34,14 +35,13 @@ ngOnInit() {
 
 enviarDatos(){
   //Podemos crear una variable donde almacenaremos los datos capturados (opcional)
-  let datos_formulario = this.formularioForm.value;
+  this.datos_formulario = this.formularioForm.value;
   //Fin variable datos formulario
 
   //Imprimir por consola los datos capturados en la variable
-  console.log(datos_formulario);
-  console.warn('Los datos capturados son:', this.formularioForm.value);
-  this.formularioForm.reset();
-  
+  console.log(this.datos_formulario);
+  // this.formularioForm.reset();
+  this.promedio();
   //Fin imprimir por consola
 }
 activar_invocable1(){
@@ -80,6 +80,15 @@ activar_promedio(){
     console.log("aprobado")
   }
 
+}
+
+promedio(){
+  let promedio_desde_servicio = this.pruebaSrv.calcular_promedio_2(this.datos_formulario.nota,this.datos_formulario.nota2);
+  if (promedio_desde_servicio <= 4){
+    return {texto : "Reprobado", prom : promedio_desde_servicio}
+  }else{
+    return {texto : "Aprobado", prom : promedio_desde_servicio}
+  }
 }
 
 }
